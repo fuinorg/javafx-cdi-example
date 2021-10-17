@@ -1,0 +1,41 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: maven-build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v2
+
+    - name: Setup JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+        java-package: jdk
+
+    - name: Prepare Maven Build
+      run: |
+        echo "-Djava.awt.headless=true -Dtestfx.robot=glass -Dtestfx.headless=true -Dprism.order=sw -Dprism.text=t2k -Dtestfx.setup.timeout=2500" >> ${{ github.workspace }}/.mvn/jvm.config
+    
+    - name: Build with Maven
+      uses: GabrielBB/xvfb-action@v1
+      with:
+         run: mvn -B -s settings.xml --file pom.xml package
+
+    - name: Save Application ZIP
+      uses: actions/upload-artifact@v2
+      with:
+        name: app
+        path: ${{ github.workspace }}/example/target/javafx-cdi-example-0.1.0-SNAPSHOT-bin.zip
+        retention-days: 7t
