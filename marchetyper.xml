@@ -1,0 +1,60 @@
+<marchetyper-config 
+    src-dir="../javafx-cdi-example"
+	dest-dir="./target/javafx-cdi-archetype"
+	binary-files=".*\.(jar|gitignore|gitkeep|png)"
+	text-files="(.*\.(properties|md|java|cli|sh|bat|yml|xml|fxml))|Dockerfile"
+	test="true">
+
+	<archetype group-id="org.fuin.archetypes" artifact-id="javafx-cdi-archetype" version="0.1.0-SNAPSHOT">
+		<property name="groupId" default="com.mycompany" test="org.fuin.examples.javafxcdi" />
+		<property name="artifactId" default="myapp" test="javafx-cdi-example" />
+		<property name="version" default="0.1.0-SNAPSHOT" test="0.1.0-SNAPSHOT" />
+		<property name="pkgPath" default="com/mycompany/myapp" test="org/fuin/examples/javafxcdi" />
+		<property name="description" default="My cool application" test="JavaFX with CDI Example" />
+		<property name="hyphenName" default="my-cool-app" test="javafx-cdi-example" />
+		<property name="mainName" default="MyCoolApp" test="JavafxCdiExample" />
+	</archetype>
+
+	<variables>
+	 	<variable name="pkgName" source="pkgPath" transform="SLASH_2_DOT" />
+	</variables>
+	 
+	<!-- Replacement definition for path elements -->
+	<path-mappings>
+		<mapping search="org/fuin/examples/javafxcdi" replace="__pkgPath__" />
+		<mapping search="javafx-cdi-example" replace="__hyphenName__" />
+		<mapping search="JavafxCdiExample" replace="__mainName__" />
+	</path-mappings>
+
+	<!-- Replacement definition for text files -->
+	<text-file-mappings>
+	
+		<mapping search="&lt;groupId&gt;org.fuin.examples.javafx&lt;/groupId&gt;" replace="&lt;groupId&gt;${groupId}&lt;/groupId&gt;" file="pom\.xml" />
+		<mapping search="&lt;artifactId&gt;javafx-cdi-example&lt;/artifactId&gt;" replace="&lt;artifactId&gt;${artifactId}&lt;/artifactId&gt;" file="pom\.xml" />
+		<mapping search="&lt;description&gt;JavaFX with CDI Example (Code)&lt;/description&gt;" replace="&lt;description&gt;${description}&lt;/description&gt;" file="pom\.xml" />
+		<mapping search="&lt;Automatic-Module-Name&gt;org.fuin.examples.javafxcdi&lt;/Automatic-Module-Name&gt;" replace="&lt;Automatic-Module-Name&gt;${pkgName}&lt;/Automatic-Module-Name&gt;" file="pom\.xml" />
+		
+		<mapping search="JavafxCdiExample" replace="${mainName}" />
+		<mapping search="javafx-cdi-example" replace="${hyphenName}" />
+		<mapping search="JavaFX with CDI Example" replace="${description}" />
+		<mapping search="org.fuin.examples.javafxcdi" replace="${pkgName}" />
+	
+	</text-file-mappings>
+
+	<!-- Directories and files that will always be copied (also if part of 'file-excludes') -->
+	<file-includes>
+		<filter file=".*\.gitignore" />
+		<filter path=".*/\.github/.*" />
+		<filter path=".*/\.mvn/.*" />
+	</file-includes>
+
+	<!-- Directories and files that will not be copied -->
+	<file-excludes>
+		<filter path=".*/target/.*" />
+		<filter path=".*/\..*/.*"/>
+		<filter file="^\..*" />
+		<filter file=".*\.log" />
+		<filter file="marchetyper\.xml" />
+	</file-excludes>
+
+</marchetyper-config>
