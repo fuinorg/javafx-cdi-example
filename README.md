@@ -81,17 +81,17 @@ There are often some operations that may take a while. You need to create a task
 ### Blocking UI during task execution
 During execution of a long running task you most likely want to block the UI and show some progress indicator.
 
-<a href="images/progress-indicator.png"><img src="https://github.com/michael-schnell/javafx-cdi-example/raw/main/images/progress-indicator.png" width="206" height="239"></a>
+<a href="images/progress-indicator.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/progress-indicator.png" width="206" height="239"></a>
 
 ### About dialog showing a version
 Use the Maven version from the POM and the Git information inside the project to populate an [About](example/src/main/java/org/fuin/examples/javafxcdi/controls/AboutAlert.java) dialog.
 
-<a href="images/about.png"><img src="https://github.com/michael-schnell/javafx-cdi-example/raw/main/images/about.png" width="241" height="170"></a>
+<a href="images/about.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/about.png" width="241" height="170"></a>
 
 ### Catching unexpected exceptions showing a dialog
 Sometimes your application will fail and throw an exception. It's a good idea to show something useful to the user (See [ExceptionAlert](example/src/main/java/org/fuin/examples/javafxcdi/controls/ExceptionAlert.java)).
 
-<a href="images/exception-dialog.png"><img src="https://github.com/michael-schnell/javafx-cdi-example/raw/main/images/exception-dialog.png" width="291" height="118"></a>
+<a href="images/exception-dialog.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/exception-dialog.png" width="291" height="118"></a>
 
 
 
