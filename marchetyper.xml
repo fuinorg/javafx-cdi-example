@@ -50,6 +50,7 @@
 
 	<!-- Directories and files that will not be copied -->
 	<file-excludes>
+		<filter path=".*/images/.*" />
 		<filter path=".*/target/.*" />
 		<filter path=".*/\..*/.*"/>
 		<filter file="^\..*" />
