@@ -27,7 +27,7 @@ This example has the following features included:
 The project is based on Java 11 and [JavaFX](https://openjfx.io/).
 
 ### Maven build
-There is a fully configured Maven build that creates a ZIP archive that has a [batch file](example/src/main/app/javafx-cdi-example.bat) (Windows) and a [shell script](example/src/main/app/javafx-cdi-example.sh) (Linux) to start the application.
+There is a fully configured Maven build that creates a ZIP archive that has a [batch file](src/main/app/javafx-cdi-example.bat) (Windows) and a [shell script](src/main/app/javafx-cdi-example.sh) (Linux) to start the application.
 
 ### Github build
 The project is ready [configured](.github/workflows/maven.yml) to be build on Github.
@@ -61,7 +61,7 @@ public class ChildController implements Initializable {
 
 ### Structuring an application with sub controllers
 If you start with JavaFX it's not easy to figure out how to structure a larger application.
-See the [JavafxCdiExampleController.java](example/src/main/java/org/fuin/examples/javafxcdi/app/JavafxCdiExampleController.java#L72) to see how a parent controller opens a child controller and passes some data to it.
+See the [JavafxCdiExampleController.java](src/main/java/org/fuin/examples/javafxcdi/app/JavafxCdiExampleController.java#L72) to see how a parent controller opens a child controller and passes some data to it.
 
 ```java
 @FXML
@@ -76,7 +76,7 @@ public void onOpenChildController(ActionEvent event) {
 ```
 
 ### Using tasks for handling long operations
-There are often some operations that may take a while. You need to create a task for it. See the [LongRunningTaskExample.java](example/src/main/java/org/fuin/examples/javafxcdi/app/LongRunningTaskExample.java) on how to do it. The task also emits some status information to the UI and blocks it.
+There are often some operations that may take a while. You need to create a task for it. See the [LongRunningTaskExample.java](src/main/java/org/fuin/examples/javafxcdi/app/LongRunningTaskExample.java) on how to do it. The task also emits some status information to the UI and blocks it.
 
 ### Blocking UI during task execution
 During execution of a long running task you most likely want to block the UI and show some progress indicator.
@@ -84,12 +84,12 @@ During execution of a long running task you most likely want to block the UI and
 <a href="images/progress-indicator.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/progress-indicator.png" width="206" height="239"></a>
 
 ### About dialog showing a version
-Use the Maven version from the POM and the Git information inside the project to populate an [About](example/src/main/java/org/fuin/examples/javafxcdi/controls/AboutAlert.java) dialog.
+Use the Maven version from the POM and the Git information inside the project to populate an [About](src/main/java/org/fuin/examples/javafxcdi/controls/AboutAlert.java) dialog.
 
 <a href="images/about.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/about.png" width="241" height="170"></a>
 
 ### Catching unexpected exceptions showing a dialog
-Sometimes your application will fail and throw an exception. It's a good idea to show something useful to the user (See [ExceptionAlert](example/src/main/java/org/fuin/examples/javafxcdi/controls/ExceptionAlert.java)).
+Sometimes your application will fail and throw an exception. It's a good idea to show something useful to the user (See [ExceptionAlert](src/main/java/org/fuin/examples/javafxcdi/controls/ExceptionAlert.java)).
 
 <a href="images/exception-dialog.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/exception-dialog.png" width="291" height="118"></a>
 
