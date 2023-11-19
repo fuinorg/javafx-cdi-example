@@ -1,12 +1,16 @@
-# Java build with Maven
-
-name: maven-build
+name: Java Maven Build
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - '**'
+    paths-ignore:
+      - '**/README.md'
   pull_request:
-    branches: [ main ]
+    branches:
+      - '**'
+    paths-ignore:
+      - '**/README.md'
 
 jobs:
   build:
@@ -14,27 +18,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Source Code
-      uses: actions/checkout@v2
-
-    - name: Setup JDK
-      uses: actions/setup-java@v1
+    - name: Checkout source
+      uses: actions/checkout@v3
       with:
-        java-version: '11'
-        java-package: jdk
+        fetch-depth: 0
 
-    - name: Prepare Maven Build
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'zulu'
+        cache: maven
+
+    - name: Show versions
+      run: java -version && ./mvnw -version && gpg --version
+
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+
+    - name: Prepare headless run
       run: |
         echo "-Djava.awt.headless=true -Dtestfx.robot=glass -Dtestfx.headless=true -Dprism.order=sw -Dprism.text=t2k -Dtestfx.setup.timeout=2500" >> ${{ github.workspace }}/.mvn/jvm.config
     
-    - name: Build with Maven
-      uses: GabrielBB/xvfb-action@v1
+    - name: Build and run test
+      uses: coactions/setup-xvfb@v1
       with:
-         run: mvn -B -s settings.xml --file pom.xml package
-
-    - name: Save Application ZIP
-      uses: actions/upload-artifact@v2
-      with:
-        name: app
-        path: ${{ github.workspace }}/example/target/javafx-cdi-example-0.1.0-SNAPSHOT-bin.zip
-        retention-days: 7t
+         run: ./mvnw clean package -U -B --file pom.xml -s settings.xml
