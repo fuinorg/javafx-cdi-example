@@ -5,10 +5,10 @@
 	text-files="(.*\.(properties|md|java|cli|sh|bat|yml|xml|fxml))|Dockerfile"
 	test="true">
 
-	<archetype group-id="org.fuin.archetypes" artifact-id="javafx-cdi-archetype" version="0.1.0-SNAPSHOT">
+	<archetype group-id="org.fuin.archetypes" artifact-id="javafx-cdi-archetype" version="0.2.0-SNAPSHOT">
 		<property name="groupId" default="com.mycompany" test="org.fuin.examples.javafxcdi" />
 		<property name="artifactId" default="myapp" test="javafx-cdi-example" />
-		<property name="version" default="0.1.0-SNAPSHOT" test="0.1.0-SNAPSHOT" />
+		<property name="version" default="0.2.0-SNAPSHOT" test="0.2.0-SNAPSHOT" />
 		<property name="pkgPath" default="com/mycompany/myapp" test="org/fuin/examples/javafxcdi" />
 		<property name="description" default="My cool application" test="JavaFX with CDI Example" />
 		<property name="hyphenName" default="my-cool-app" test="javafx-cdi-example" />

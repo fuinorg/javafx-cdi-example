@@ -6,7 +6,7 @@
 
     <groupId>org.fuin.examples.javafxcdi</groupId>
     <artifactId>javafx-cdi-example-app</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>JavaFX with CDI Example</description>
 
