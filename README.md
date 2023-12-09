@@ -12,7 +12,7 @@ Most tutorials for [JavaFX](https://openjfx.io/) only show how to create a scree
 
 This example has the following features included:
 
-* [Based on Java 11 with JavaFX 13](#based-on-java-11-with-javafx-13)
+* [Based on Java 17 with JavaFX 21](#based-on-java-17-with-javafx-21)
 * [Maven build](#maven-build)
 * [Github build](#github-build)
 * [Contexts and Dependency Injection (CDI)](#contexts-and-dependency-injection-cdi)
@@ -21,10 +21,11 @@ This example has the following features included:
 * [Blocking UI during task execution](#blocking-ui-during-task-execution)
 * [About dialog showing a version](#about-dialog-showing-a-version)
 * [Catching unexpected exceptions showing a dialog](#catching-unexpected-exceptions-showing-a-dialog)
+* [UI test with TestFX](#ui-test-with-testfx)
 * [Maven Archetype](#maven-archetype)
 
-### Based on Java 11 with JavaFX 13
-The project is based on Java 11 and [JavaFX](https://openjfx.io/).
+### Based on Java 17 with JavaFX 21
+The project is based on Java 17 and [JavaFX](https://openjfx.io/).
 
 ### Maven build
 There is a fully configured Maven build that creates a ZIP archive that has a [batch file](src/main/app/javafx-cdi-example.bat) (Windows) and a [shell script](src/main/app/javafx-cdi-example.sh) (Linux) to start the application.
@@ -92,6 +93,9 @@ Use the Maven version from the POM and the Git information inside the project to
 Sometimes your application will fail and throw an exception. It's a good idea to show something useful to the user (See [ExceptionAlert](src/main/java/org/fuin/examples/javafxcdi/controls/ExceptionAlert.java)).
 
 <a href="images/exception-dialog.png"><img src="https://github.com/fuinorg/javafx-cdi-example/raw/main/images/exception-dialog.png" width="291" height="118"></a>
+
+### UI test with TestFX
+Example UI test with TestFX: [JavafxCdiExampleTest.java](test/src/test/java/org/fuin/examples/javafxcdi/test/JavafxCdiExampleTest.java)
 
 ### Maven Archetype
 There is a [Maven Archetype](https://github.com/fuinorg/javafx-cdi-archetype) available that helps kickstarting your own project based on this code.
