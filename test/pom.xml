@@ -19,7 +19,7 @@
 		<maven.compiler.release>${java.version}</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<javafx.version>21.0.1</javafx.version>
+		<javafx.version>21.0.5</javafx.version>
 	</properties>
 
 	<dependencies>
@@ -35,13 +35,13 @@
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-core</artifactId>
-			<version>5.1.2.Final</version>
+			<version>6.0.0.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>jakarta.el</groupId>
 			<artifactId>jakarta.el-api</artifactId>
-			<version>5.0.1</version>
+			<version>6.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -55,21 +55,21 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.5.1</version>
+			<version>5.11.4</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.testfx</groupId>
 			<artifactId>testfx-junit5</artifactId>
-			<version>4.0.17</version>
+			<version>4.0.18</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.24.2</version>
+			<version>3.26.3</version>
 			<scope>test</scope>
 		</dependency>
 
