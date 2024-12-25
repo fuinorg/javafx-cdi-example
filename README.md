@@ -12,7 +12,7 @@ Most tutorials for [JavaFX](https://openjfx.io/) only show how to create a scree
 
 This example has the following features included:
 
-* [Based on Java 17 with JavaFX 21](#based-on-java-17-with-javafx-21)
+* [Based on Java 21 with JavaFX 21](#based-on-java-21-with-javafx-21)
 * [Maven build](#maven-build)
 * [Github build](#github-build)
 * [Contexts and Dependency Injection (CDI)](#contexts-and-dependency-injection-cdi)
@@ -24,8 +24,8 @@ This example has the following features included:
 * [UI test with TestFX](#ui-test-with-testfx)
 * [Maven Archetype](#maven-archetype)
 
-### Based on Java 17 with JavaFX 21
-The project is based on Java 17 and [JavaFX](https://openjfx.io/).
+### Based on Java 21 with JavaFX 21
+The project is based on Java 21 and [JavaFX](https://openjfx.io/).
 
 ### Maven build
 There is a fully configured Maven build that creates a ZIP archive that has a [batch file](src/main/app/javafx-cdi-example.bat) (Windows) and a [shell script](src/main/app/javafx-cdi-example.sh) (Linux) to start the application.
