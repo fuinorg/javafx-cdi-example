@@ -26,10 +26,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: graalvm/setup-graalvm@v1
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'graalvm-community'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -49,9 +49,14 @@ jobs:
         run: |
           echo "-Djava.awt.headless=true -Dtestfx.robot=glass -Dtestfx.headless=true -Dprism.order=sw -Dprism.text=t2k -Dtestfx.setup.timeout=2500" >> ${{ github.workspace }}/.mvn/jvm.config
 
-      - name: Build with Maven
+      - name: Build & Test
         uses: coactions/setup-xvfb@v1
         with:
           run: ./mvnw clean package -U -B -ntp --file pom.xml -s settings.xml
+        env:
+          NO_DOCKER: ${{ runner.os != 'Linux' }}
+
+      - name: Build Native
+        run: ./mvnw clean package -DskipTests=true -Pnative -U -B -ntp --file pom.xml -s settings.xml
         env:
           NO_DOCKER: ${{ runner.os != 'Linux' }}
