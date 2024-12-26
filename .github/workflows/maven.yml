@@ -31,7 +31,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'graalvm-community'
-          components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           cache: maven
 
@@ -55,3 +54,9 @@ jobs:
           run: ./mvnw clean package -U -B -ntp --file pom.xml -s settings.xml
         env:
           NO_DOCKER: ${{ runner.os != 'Linux' }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: javafx-cdi-example-bin
+          path: app/target/javafx-cdi-example-bin.zip
+          overwrite: true

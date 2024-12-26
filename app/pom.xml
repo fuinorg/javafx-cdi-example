@@ -16,6 +16,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <javafx.version>21.0.5</javafx.version>
+        <app.name>javafx-cdi-example</app.name>
+        <main.class>org.fuin.examples.javafxcdi.app.JavafxCdiExample</main.class>
     </properties>
 
     <dependencies>
@@ -229,7 +231,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>javafx-cdi-example-${project.version}</finalName>
+                            <finalName>${app.name}</finalName>
                             <descriptors>
                                 <descriptor>${project.basedir}/src/main/assembly/assembly.xml</descriptor>
                             </descriptors>
@@ -262,6 +264,39 @@
                     </includeOnlyProperties>
                     <commitIdGenerationMode>full</commitIdGenerationMode>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>java-agent</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>${main.class}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>native</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${project.build.directory}/${app.name}</executable>
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
